@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_bga_banner_selector_point_solid.xml.flat",
+        "source": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable\\bga_banner_selector_point_solid.xml"
+    },
+    {
+        "merged": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_bga_banner_item_image.xml.flat",
+        "source": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\bga_banner_item_image.xml"
+    },
+    {
+        "merged": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_bga_banner_point_enabled.png.flat",
+        "source": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\bga_banner_point_enabled.png"
+    },
+    {
+        "merged": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_bga_banner_selector_point_hollow.xml.flat",
+        "source": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable\\bga_banner_selector_point_hollow.xml"
+    },
+    {
+        "merged": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_bga_banner_point_disabled.png.flat",
+        "source": "F:\\work0\\Kotlin_try\\BEGlibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\bga_banner_point_disabled.png"
+    }
+]

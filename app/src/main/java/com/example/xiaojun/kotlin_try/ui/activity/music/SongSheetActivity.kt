@@ -20,6 +20,9 @@ import kotlinx.android.synthetic.main.activity_song_sheet.*
 import kotlinx.android.synthetic.main.song_list_operation.*
 import kotlinx.android.synthetic.main.song_list_play.*
 import org.greenrobot.eventbus.EventBus
+import android.os.Build
+
+
 
 /**
  * 这个activity需要展示来自歌单以及电台的数据

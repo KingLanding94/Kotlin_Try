@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
@@ -27,6 +28,7 @@ import com.example.xiaojun.kotlin_try.ui.fragment.book.BookFragment
 import com.example.xiaojun.kotlin_try.ui.fragment.movie.MovieFragment
 import com.example.xiaojun.kotlin_try.ui.fragment.music.MusicFragment
 import com.example.xiaojun.kotlin_try.util.Constant
+import com.example.xiaojun.kotlin_try.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.greenrobot.eventbus.EventBus
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var animationDrawble :AnimationDrawable? = null
     val mReceiver = UpdateViewReceiver()
     val fragmentTouchs = ArrayList<FragmentTouchListener>()
+    private var backClicks = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +76,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     //向playService发送请求，请求当前的播放状态
     override fun onResume() {
         super.onResume()
+
+        backClicks = 0
+
         val intent = Intent()
         intent.action = Constant.PLAYCONTROLACTION
         intent.putExtra("what",Constant.ISPLAYING)
@@ -132,7 +138,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            if (backClicks < 2){
+                ToastUtil.shortShow(getString(R.string.click_more_to_exit))
+            }else{
+                //退出应用
+            }
         }
     }
 

@@ -8,13 +8,15 @@
     android:id="@+id/songSheetActivity"
     tools:context="com.example.xiaojun.kotlin_try.ui.activity.music.SongSheetActivity">
 
+    <!--//-->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/songSheetAppBar"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+        <!--//-->
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/songSheetCollTool"
             android:layout_width="match_parent"

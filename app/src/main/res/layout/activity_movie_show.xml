@@ -9,14 +9,14 @@
     tools:context=".ui.activity.movie.MovieShowActivity">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/songSheetAppBar"
+        android:id="@+id/movieShowAppBar"
         android:layout_width="match_parent"
         android:layout_height="380dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/songSheetCollTool"
+            android:id="@+id/movieShowCollTool"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
@@ -35,6 +35,7 @@
                 android:src="@drawable/temp" />
 
             <ImageView
+                android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -109,12 +110,32 @@
 
             </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/artistRecyclerView"
-                android:layout_width="match_parent"
+
+
+            <TextView
+                android:layout_margin="@dimen/small_margin"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            </android.support.v7.widget.RecyclerView>
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:text="主演列表"/>
+
+            <cn.bingoogolapple.bgabanner.BGABanner
+                android:id="@+id/actorBanner"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="300dp"
+                android:layout_height="230dp"
+                style="@style/BannerDefaultStyle"
+                app:banner_indicatorGravity="bottom|right"
+                app:banner_isNeedShowIndicatorOnOnlyOnePage="true"
+                app:banner_isNumberIndicator="true"
+                app:banner_numberIndicatorBackground="@drawable/shape_number_indicator_background"
+                app:banner_numberIndicatorTextColor="@android:color/white"
+                app:banner_numberIndicatorTextSize="10sp"
+                app:banner_pointAutoPlayAble="true"
+                app:banner_pointContainerBackground="@android:color/transparent"
+                app:banner_transitionEffect="defaultEffect">
+            </cn.bingoogolapple.bgabanner.BGABanner>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

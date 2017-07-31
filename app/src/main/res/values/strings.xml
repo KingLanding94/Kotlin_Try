@@ -20,5 +20,7 @@
     <string name="noMoreData">没有更多了</string>
     <string name="failed__to_load_local_video">加载本地视频失败</string>
     <string name="local_music">本地音乐</string>
+    <string name="click_more_to_exit">再次点击退出应用</string>
+    <string name="use_to_change_play_mode">用来切换播放模式</string>
 
 </resources>

@@ -49,7 +49,7 @@ class SongListPresenter(private val mContext:Context,private val mView:SongListC
             }
             Constant.FROMRANK->{
                 val musicRankSource = MusicRankDataSource(mContext)
-                musicRankSource.loadRankSongList(identity.toInt(),page,size)
+                musicRankSource.loadRankSongList(identity.toInt(),size,page*size)
                         ?.map({
                             reponse:MusicRankSongResponseBean->
                                 responseToSongList(reponse.song_list!!)

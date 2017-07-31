@@ -43,6 +43,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:visibility="gone"
                 android:src="@drawable/song_play_icon"/>
         </RelativeLayout>
 
