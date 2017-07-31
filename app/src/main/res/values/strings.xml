@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Kotlin_try</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="music_song_sheet">歌单</string>
+    <string name="playAll">播放全部</string>
+    <string name="muti_choose">多选</string>
+    <string name="myLikes">我喜欢</string>
+    <string name="channelRecommend">推荐频道</string>
+    <string name="allSheet">全部歌单</string>
+    <string name="onLoading">努力加载中...</string>
+    <string name="loadingFailed">加载失败。。。</string>
+    <string name="noMoreData">没有更多了</string>
+    <string name="failed__to_load_local_video">加载本地视频失败</string>
+    <string name="local_music">本地音乐</string>
+
+</resources>

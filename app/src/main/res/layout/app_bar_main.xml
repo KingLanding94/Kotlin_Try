@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.xiaojun.kotlin_try.ui.activity.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/songSheetCollTool"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:statusBarScrim="@android:color/transparent">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/goToNavigator"
+                        android:layout_width="@dimen/navigator_width"
+                        android:layout_height="@dimen/navigator_width"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:src="@drawable/menu_icon" />
+
+                    <LinearLayout
+                        android:id="@+id/appBar_LinearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/goToMusic"
+                            style="@style/navigatorIconStyle"
+                            android:layout_width="@dimen/navigator_width"
+                            android:layout_height="@dimen/navigator_width"
+                            android:src="@drawable/music_icon" />
+
+                        <ImageView
+                            android:id="@+id/goToMovie"
+                            style="@style/navigatorIconStyle"
+                            android:layout_width="@dimen/navigator_width"
+                            android:layout_height="@dimen/navigator_width"
+                            android:src="@drawable/movie_icon" />
+
+                        <ImageView
+                            android:id="@+id/goToBook"
+                            style="@style/navigatorIconStyle"
+                            android:layout_width="@dimen/navigator_width"
+                            android:layout_height="@dimen/navigator_width"
+                            android:src="@drawable/book_icon" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/goToSearch"
+                        android:layout_width="@dimen/navigator_width"
+                        android:layout_height="@dimen/navigator_width"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        android:src="@drawable/search" />
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:background="@color/testPrimary"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/fountain_anim" />
+
+</android.support.design.widget.CoordinatorLayout>

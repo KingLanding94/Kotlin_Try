@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="260dp"
+        android:layout_height="260dp" 
+        android:src="@drawable/play_circle"/>
+    
+    <ImageView
+        android:id="@+id/albumImageView"
+        android:layout_gravity="center"
+        android:layout_width="172dp"
+        android:layout_height="172dp"
+        android:src="@drawable/album_default"/>
+
+</FrameLayout>

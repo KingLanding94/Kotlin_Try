@@ -1,0 +1,101 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.xiaojun.kotlin_try.ui.fragment.music.MusicListFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/musicListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:id="@+id/listCreated"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_menu_height"
+            android:background="@color/darkWhite">
+
+            <ImageView
+                android:id="@+id/listSwitch1"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/list_open_icon"/>
+
+            <TextView
+                android:id="@+id/listCreatedTv"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/listSwitch1"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/darkGrey"
+                android:textSize="12sp"
+                android:text="创建的歌单(0)"/>
+
+            <ImageView
+                android:id="@+id/musicListTool1"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/tool_icon"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listCreatedItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+        </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:id="@+id/listCollected"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_menu_height"
+            android:background="@color/darkWhite">
+
+            <ImageView
+                android:id="@+id/listSwitch2"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/list_open_icon"/>
+
+            <TextView
+                android:id="@+id/listCollectedTv"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/listSwitch2"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/darkGrey"
+                android:textSize="12sp"
+                android:text="收藏的歌单(0)"/>
+
+            <ImageView
+                android:id="@+id/musicListTool2"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/tool_icon"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listCollectedItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</ScrollView>
