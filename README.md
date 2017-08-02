@@ -14,18 +14,18 @@ kotlin被定为android开发的官方语言已经快3个月了，一直没有去
 二、项目展示
 <table>
     <tr>
-        <td>	<img src="http://img.blog.csdn.net/20170801000006050" width = "300" ></td>
-        <td>	<img src="http://img.blog.csdn.net/20170801003111574" width = "300" ></td>
-        <td> <img src="http://img.blog.csdn.net/20170801000755587" width = "300"></td>
+        <td>	<img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/splash.jpg" width = "300" ></td>
+        <td>	<img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/songSheetNet.jpg" width = "300" ></td>
+        <td> 	<img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/rank.jpg" width = "300"></td>
     </tr>
 </table>
 
 
 <table>
     <tr>
-	    <td> <img src="http://img.blog.csdn.net/20170801000148386" width = "300" ></td>
-        <td> <img src="http://img.blog.csdn.net/20170801003212767" width = "300" ></td>
-        <td> <img src="http://img.blog.csdn.net/20170801003133767" width = "300" > </td>
+	    <td> <img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/radio.jpg" width = "300" ></td>
+        <td> <img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/localSongList.jpg" width = "300" ></td>
+        <td> <img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/musicPlay.jpg" width = "300" > </td>
     </tr>
 </table>
 
@@ -33,17 +33,17 @@ kotlin被定为android开发的官方语言已经快3个月了，一直没有去
 
 <table>
     <tr>
-        <td>	<img src="http://img.blog.csdn.net/20170801003551379" width = "300" ></td>
-        <td> <img src="http://img.blog.csdn.net/20170801003712173" width = "300"></td>
-        <td> <img src="http://img.blog.csdn.net/20170801003212767" width = "300" ></td>
+        <td>	<img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/inTheater.jpg" width = "300" ></td>
+        <td> <img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/Top250.jpg" width = "300"></td>
+        <td> <img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/movieDetail.jpg" width = "300" ></td>
     </tr>
 </table>
 
 <table>
     <tr>
-        <td>	<img src="http://img.blog.csdn.net/20170801004116449" width = "300" ></td>
-		<td> <img src="http://img.blog.csdn.net/20170801004013285" width = "300"></td>  
-        <td> <img src="http://img.blog.csdn.net/20170801004047097" width = "300" ></td>
+        <td>	<img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/localMovieList.jpg" width = "300" ></td>
+		<td> <img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/playVideo.jpg" width = "300"></td>  
+        <td> <img src="https://github.com/KingLanding94/Kotlin_Try/blob/master/app/ScreenShot/songSheet.jpg" width = "300" ></td>
     </tr>
 </table>
 
@@ -51,8 +51,7 @@ kotlin被定为android开发的官方语言已经快3个月了，一直没有去
 
 三、所用技术
 
-  1、MVP开发模式
-  
+  1、MVP开发模式,Kotlin开发语言
   2、rxjava+retrofit+okhttp网络框架
   
   3、glide加载图片
