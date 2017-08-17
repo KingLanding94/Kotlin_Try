@@ -1,10 +1,7 @@
 package com.example.xiaojun.kotlin_try.ui.fragment.movie
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
@@ -15,7 +12,7 @@ import com.example.xiaojun.kotlin_try.contact.MovieLocalContact
 import com.example.xiaojun.kotlin_try.data.bean.MovieBean
 import com.example.xiaojun.kotlin_try.mlibrary.RecyclerViewItemSpace
 import com.example.xiaojun.kotlin_try.presenter.MovieLocalPresenter
-import com.example.xiaojun.kotlin_try.service.MOnRecyclerViewClickListener
+import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewClickListener
 import com.example.xiaojun.kotlin_try.ui.activity.movie.MoviePlayActivity
 import com.example.xiaojun.kotlin_try.util.ToastUtil
 import com.scwang.smartrefresh.layout.api.RefreshLayout
@@ -49,7 +46,7 @@ class MovieLocalFragment:BaseFragmentForList(),MovieLocalContact.View {
         Log.e("success","movieLocal")
         list = mPresenter.submitData()
         var mAdapter = MovieLocalAdapter(formatData())
-        mAdapter.clickListener = object :MOnRecyclerViewClickListener{
+        mAdapter.clickListener = object : MOnRecyclerViewClickListener {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(activity,MoviePlayActivity::class.java)
                 intent.putExtra("video",list[position])

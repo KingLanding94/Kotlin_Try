@@ -6,22 +6,21 @@ import com.example.xiaojun.kotlin_try.R
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.view.*
-import android.view.animation.AnimationUtils
 import com.example.xiaojun.kotlin_try.adapter.CommonPagerAdapter
 import com.example.xiaojun.kotlin_try.contact.TypeTabContact
-import com.example.xiaojun.kotlin_try.service.FragmentTouchListener
+import com.example.xiaojun.kotlin_try.listener.FragmentTouchListener
 import com.example.xiaojun.kotlin_try.ui.activity.MainActivity
 import com.example.xiaojun.kotlin_try.util.Constant
 
-
 /**
- * Created by Xiaojun on 2017/7/14.
- */
+* Created by XiaoJun on 2017/7/14.
+* Version 1.0.0
+*/
 
 /**
  * this BaseFragment is just for three main fragments:movie music book
  */
-abstract class BaseFragment:Fragment(),TypeTabContact.View, FragmentTouchListener,GestureDetector.OnGestureListener{
+abstract class BaseFragmentForMain:Fragment(),TypeTabContact.View, FragmentTouchListener,GestureDetector.OnGestureListener{
 
 
     var rootView : View? = null
@@ -31,18 +30,21 @@ abstract class BaseFragment:Fragment(),TypeTabContact.View, FragmentTouchListene
     protected var fragments = arrayListOf<Fragment>()
     private var detector : GestureDetector? = null
     private var tabIsOpen = true
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootView = inflater!!.inflate(R.layout.base_fragment_layout_main,container,false)
+        val rootView = inflater!!.inflate(R.layout.base_fragment_layout_main,container,false)
         tabLayout = rootView.findViewById(R.id.baseFragmentTabLayout)
         viewPager = rootView.findViewById(R.id.baseFragmentViewPager)
         setFragmentItems()
         initView()
         val pagerAdapter = CommonPagerAdapter(childFragmentManager,fragments,tabs)
         viewPager!!.adapter = pagerAdapter
+
+        viewPager!!.offscreenPageLimit = 3     //缓存三个页面的内容
         tabLayout!!.setupWithViewPager(viewPager)
         setUpTab()
         (activity as MainActivity).registerFragmentTouch(this)
-        detector = GestureDetector(activity,this)
+        detector = GestureDetector(activity,this)  //fragment监听手势事件
         return rootView
     }
 
@@ -89,7 +91,7 @@ abstract class BaseFragment:Fragment(),TypeTabContact.View, FragmentTouchListene
             return false
         }
         //向下滑动
-        if (p1!!.y - p0!!.y >50){
+        if (p1.y - p0.y >50){
             if (!tabIsOpen){
                 tabIsOpen = true
 
@@ -97,7 +99,7 @@ abstract class BaseFragment:Fragment(),TypeTabContact.View, FragmentTouchListene
         }
 
         //向上滑动
-        if (p0!!.y - p1!!.y >50){
+        if (p0.y - p1.y >50){
             if (tabIsOpen){
                 tabIsOpen = false
 

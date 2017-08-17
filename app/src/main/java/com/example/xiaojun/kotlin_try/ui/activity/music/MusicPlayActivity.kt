@@ -5,9 +5,9 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.graphics.Bitmap
 import android.graphics.Point
 import android.os.*
-import android.support.v7.app.AppCompatActivity
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.util.Log
@@ -16,8 +16,9 @@ import android.view.animation.AnimationUtils
 import android.widget.SeekBar
 import com.bumptech.glide.Glide
 import com.example.xiaojun.kotlin_try.R
+import com.example.xiaojun.kotlin_try.base.BaseActivity
 import com.example.xiaojun.kotlin_try.data.db.SongInfoBean
-import com.example.xiaojun.kotlin_try.service.MusicPlayListener
+import com.example.xiaojun.kotlin_try.listener.MusicPlayListener
 import com.example.xiaojun.kotlin_try.service.MusicPlayService
 import com.example.xiaojun.kotlin_try.service.MusicPlaySys
 import com.example.xiaojun.kotlin_try.ui.widget.AlbumView
@@ -30,7 +31,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-class MusicPlayActivity : AppCompatActivity(), ServiceConnection, View.OnClickListener, MusicPlayListener {
+class MusicPlayActivity : BaseActivity(), ServiceConnection, View.OnClickListener, MusicPlayListener {
     /**
      * 与音乐播放服务绑定,在播放活动里面，播放并不管理当前的播放列表
      * 当这个活动被点开之后，此界面向playService发送请求消息，然后playservice把
@@ -141,11 +142,10 @@ class MusicPlayActivity : AppCompatActivity(), ServiceConnection, View.OnClickLi
         musicPlayService = mBinder!!.getMediaPlayService()
         musicPlayService!!.setPlayingListener(this)
 
-        albums.clear()
-        //同步播放列表
+        albums.clear()  //清除以前旧播放列表
+        //同步播放列表,设置图片不可以在这里一次性设置，不然内存会不够用
         for (i in musicPlayService!!.getSongList()){
             val album = AlbumView(this)
-            album.setAlbum(i)
             albums.add(album)
         }
         albumPagerAdapter?.notifyDataSetChanged()
@@ -164,13 +164,13 @@ class MusicPlayActivity : AppCompatActivity(), ServiceConnection, View.OnClickLi
         songName.text = event.song.title
         artistName.text = event.song.artist
 
+        //如果歌曲里面含有专辑图片，直接从专辑里面设置，如果没有，查找本地图片记录，如果没有，从网络加载
         if (!isBgSet) {
             Log.e("setImage", " 0" + currSongInfo.toString())
             if (currSongInfo!!.from == Constant.FROMLOCAL) {
-                val bitmap = MUtils.getBitMapFromSong(currSongInfo!!.songPath)
-                if (bitmap != null) {
-                    albumArt.setImageBitmap(bitmap)
-                    isBgSet = true
+                val bytes = MUtils.getBitmapBytes(currSongInfo!!.songPath)
+                if (bytes != null) {
+                    setBackGround(bytes)
                 }
             }
             if (!isBgSet && currSongInfo!!.coverPath != null) {
@@ -206,6 +206,11 @@ class MusicPlayActivity : AppCompatActivity(), ServiceConnection, View.OnClickLi
         Log.e("MusicPlayActivity", "destroy")
 //        toSys = false
 
+    }
+
+    //中这样处理依然不能解决启动musicPlayActivity白屏的问题
+    override fun onBackPressed() {
+        moveTaskToBack(true)
     }
 
     override fun onClick(p0: View?) {
@@ -303,6 +308,17 @@ class MusicPlayActivity : AppCompatActivity(), ServiceConnection, View.OnClickLi
                 .into(albumArt)
     }
 
+    //glide可以直接设置bitmap吗？
+    fun setBackGround(byteArray: ByteArray){
+        isBgSet = true
+        Glide.with(this)
+                .load(byteArray)
+                .bitmapTransform(BlurTransformation(this, 25))
+                .crossFade(1000)
+                .error(R.drawable.login_bg)
+                .into(albumArt)
+    }
+
     fun needleToPlay() {
         val animation = AnimationUtils.loadAnimation(this@MusicPlayActivity, R.anim.needle_to_play)
         animation.fillAfter = true
@@ -328,6 +344,7 @@ class MusicPlayActivity : AppCompatActivity(), ServiceConnection, View.OnClickLi
 
     inner class ViewPagerTouch :View.OnTouchListener{
         var downPoint:Point ? = null
+        @SuppressLint("ClickableViewAccessibility")
         override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
                 when (p1?.action){
                     MotionEvent.ACTION_DOWN->{

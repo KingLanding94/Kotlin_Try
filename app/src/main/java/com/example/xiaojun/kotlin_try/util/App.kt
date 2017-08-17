@@ -1,5 +1,6 @@
 package com.example.xiaojun.kotlin_try.util
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -24,7 +25,9 @@ class App:Application() {
     private var mDaoSession: DaoSession? = null
 
     companion object {
+        @SuppressLint("StaticFieldLeak")
         var mContext:Context? = null
+        @SuppressLint("StaticFieldLeak")
         var instance : App? = null
 
         fun getContext():Context{

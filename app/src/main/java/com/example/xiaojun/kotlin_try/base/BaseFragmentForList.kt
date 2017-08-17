@@ -25,6 +25,7 @@ open abstract class BaseFragmentForList :BaseFragmentForAll(),OnRefreshListener,
 
     protected var recyclerView:RecyclerView? = null
     protected var refreshLayout:RefreshLayout? = null
+//    protected var isFirst = true;
 
     override fun initView() {
         super.initView()

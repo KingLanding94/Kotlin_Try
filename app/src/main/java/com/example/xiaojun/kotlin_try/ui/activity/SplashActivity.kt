@@ -1,4 +1,4 @@
-package com.example.xiaojun.kotlin_try
+package com.example.xiaojun.kotlin_try.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,18 +7,15 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import com.example.xiaojun.kotlin_try.data.db.SongInfoDao
-import com.example.xiaojun.kotlin_try.ui.activity.MainActivity
 import com.example.xiaojun.kotlin_try.util.Constant
 import kotlinx.android.synthetic.main.activity_splash.*
-import android.view.View.SYSTEM_UI_FLAG_FULLSCREEN
+import com.example.xiaojun.kotlin_try.R
+import com.example.xiaojun.kotlin_try.base.BaseActivity
 
-
-
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     val MOVE = 1
     val duration:Long = 2500
@@ -33,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
 
         val typeFace:Typeface = Typeface.createFromAsset(assets, "fofbb_ital.otf")
         appName.typeface = typeFace
-        val animation = AnimationUtils.loadAnimation(this,R.anim.splash)
+        val animation = AnimationUtils.loadAnimation(this, R.anim.splash)
         animation.fillAfter = true
         animation.duration = duration
         appName.animation = animation
@@ -50,19 +47,5 @@ class SplashActivity : AppCompatActivity() {
             }
         }
         handler.sendEmptyMessageDelayed(MOVE,duration)
-    }
-
-
-    /**
-     * 如果这是第一次使用，数据库需初始化数据,现在数据库这部分内容先不做处理
-     */
-    fun initData(){
-        //如果没有建立数据库，那么建立数据库
-        val dao = SongInfoDao()
-        if (!dao.isTableCreated(Constant.LOCALMUSIC)){
-            dao.createSongTable(Constant.LOCALMUSIC)
-            dao.createSongTable(Constant.RECENTPLAY)
-            dao.createSongTable(Constant.FAVORITE)
-        }
     }
 }

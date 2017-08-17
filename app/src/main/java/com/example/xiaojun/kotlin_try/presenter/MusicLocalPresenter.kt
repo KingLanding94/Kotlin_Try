@@ -23,10 +23,12 @@ class MusicLocalPresenter(val mView:MusicLocalContract.View):MusicLocalContract.
     private val list = ArrayList<SongInfoBean>()
 
 
+    //目前获取歌曲的方式还是通过ContentProvider
+
     override fun start() {
         Observable.create({
             e: ObservableEmitter<MutableList<SongInfoBean>>? ->
-            e?.onNext(localMusicDataSource.getSongFromDb())
+            e?.onNext(localMusicDataSource.getMusicList())
             e?.onComplete()
         })
                 .observeOn(AndroidSchedulers.mainThread())
@@ -47,6 +49,7 @@ class MusicLocalPresenter(val mView:MusicLocalContract.View):MusicLocalContract.
                     }
 
                     override fun onError(e: Throwable?) {
+                        Log.e("loadDate",e.toString())
                         disposable?.dispose()
                         onFailed()
                     }

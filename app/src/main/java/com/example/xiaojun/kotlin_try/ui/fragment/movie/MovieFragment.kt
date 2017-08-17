@@ -1,7 +1,7 @@
 package com.example.xiaojun.kotlin_try.ui.fragment.movie
 
 import android.support.v4.app.Fragment
-import com.example.xiaojun.kotlin_try.base.BaseFragment
+import com.example.xiaojun.kotlin_try.base.BaseFragmentForMain
 import com.example.xiaojun.kotlin_try.presenter.TypeTabPresenter
 import com.example.xiaojun.kotlin_try.util.Constant
 
@@ -13,7 +13,7 @@ import com.example.xiaojun.kotlin_try.util.Constant
  * movieFragment是相对于整个项目而言的，movie，music，book
  * 这个fragment里面设置tab是用rxjava，原本认为标题可能是由服务器发送到客户端，然后再显示
  */
-class MovieFragment:BaseFragment() {
+class MovieFragment:BaseFragmentForMain() {
 
     var mPresenter  = TypeTabPresenter(Constant.MOVIE,this)
 

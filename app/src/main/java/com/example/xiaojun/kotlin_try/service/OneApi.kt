@@ -23,5 +23,12 @@ interface OneApi {
     fun getListBean(@Path("month") month: String): Observable<MonthInOneBean>
 
 
+    /**
+     * 获取指定文章
+     */
+
+
+
+
 
 }

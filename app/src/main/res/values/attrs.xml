@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="CircleImageView">
+        <!--圆形头像的半径-->
+        <attr name="radius" format="dimension"/>
+    </declare-styleable>
 
 </resources>

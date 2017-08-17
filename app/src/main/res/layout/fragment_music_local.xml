@@ -1,42 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/musicLocalToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        app:title="@string/local_music"
-        app:navigationIcon="@drawable/ic_action_back">
-
-    </android.support.v7.widget.Toolbar>
-
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/musicLocalToolbar"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout
-            android:orientation="vertical"
+        android:orientation="vertical">
+
+        <include layout="@layout/song_list_play" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/songLocalRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
 
-            <include layout="@layout/song_list_play"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/songLocalRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
-            </android.support.v7.widget.RecyclerView>
-        </LinearLayout>
-
-    </android.support.v4.widget.NestedScrollView>
-
-
-</RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

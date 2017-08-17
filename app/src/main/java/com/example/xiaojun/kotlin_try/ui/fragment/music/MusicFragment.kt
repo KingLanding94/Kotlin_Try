@@ -1,13 +1,14 @@
 package com.example.xiaojun.kotlin_try.ui.fragment.music
 
-import com.example.xiaojun.kotlin_try.base.BaseFragment
+import com.example.xiaojun.kotlin_try.base.BaseFragmentForMain
 import com.example.xiaojun.kotlin_try.presenter.TypeTabPresenter
 import com.example.xiaojun.kotlin_try.util.Constant
 
 /**
- * Created by Xiaojun on 2017/7/14.
- */
-class MusicFragment:BaseFragment() {
+* Created by XiaoJun on 2017/7/14.
+* Version 1.0.0
+*/
+class MusicFragment:BaseFragmentForMain() {
 
 
     var mPresenter  = TypeTabPresenter(Constant.MUSIC,this)

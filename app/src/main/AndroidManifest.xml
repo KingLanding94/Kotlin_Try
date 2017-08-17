@@ -20,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity" android:theme="@style/SplashTheme">
+        <activity android:name=".ui.activity.SplashActivity" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,7 +38,11 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".ui.activity.music.MusicPlayActivity"  android:theme="@style/TranslucentTheme"/>
+        <!--以单例模式启动音乐播放activity-->
+
+        <activity android:name=".ui.activity.music.MusicPlayActivity"  android:theme="@style/TranslucentTheme"
+            android:launchMode="singleInstance"
+            android:label=""/>
         <activity android:name=".ui.activity.music.LocalSongSheetActivity" />
         <activity android:name=".ui.activity.movie.MoviePlayActivity"
             android:screenOrientation="landscape"/>

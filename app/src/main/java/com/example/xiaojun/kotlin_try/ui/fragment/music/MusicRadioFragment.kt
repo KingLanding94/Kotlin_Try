@@ -3,13 +3,8 @@ package com.example.xiaojun.kotlin_try.ui.fragment.music
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import com.example.xiaojun.kotlin_try.R
 import com.example.xiaojun.kotlin_try.adapter.CommonRecyclerViewAdapter
@@ -17,7 +12,7 @@ import com.example.xiaojun.kotlin_try.adapter.MusicStationAdapter
 import com.example.xiaojun.kotlin_try.base.BaseFragmentForList
 import com.example.xiaojun.kotlin_try.contact.MusicRadioContact
 import com.example.xiaojun.kotlin_try.data.bean.MusicRadioStationResponseBean
-import com.example.xiaojun.kotlin_try.service.MOnRecyclerViewClickListener
+import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewClickListener
 import com.example.xiaojun.kotlin_try.mlibrary.RecyclerViewItemSpace
 import com.example.xiaojun.kotlin_try.presenter.MusicRadioPresenter
 import com.example.xiaojun.kotlin_try.ui.activity.music.SongSheetActivity

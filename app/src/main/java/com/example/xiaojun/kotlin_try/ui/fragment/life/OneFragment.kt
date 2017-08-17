@@ -1,6 +1,6 @@
 package com.example.xiaojun.kotlin_try.ui.fragment.life
 
-import com.example.xiaojun.kotlin_try.base.BaseFragment
+import com.example.xiaojun.kotlin_try.base.BaseFragmentForMain
 import com.example.xiaojun.kotlin_try.presenter.TypeTabPresenter
 import com.example.xiaojun.kotlin_try.ui.fragment.music.MusicListFragment
 import com.example.xiaojun.kotlin_try.ui.fragment.music.MusicRadioFragment
@@ -9,7 +9,7 @@ import com.example.xiaojun.kotlin_try.ui.fragment.music.MusicRecomFragment
 import com.example.xiaojun.kotlin_try.util.Constant
 
 
-class OneFragment : BaseFragment(){
+class OneFragment : BaseFragmentForMain(){
 
 
     var mPresenter  = TypeTabPresenter(Constant.MUSIC,this)

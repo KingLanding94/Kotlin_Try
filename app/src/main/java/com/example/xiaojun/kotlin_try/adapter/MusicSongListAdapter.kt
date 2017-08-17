@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.xiaojun.kotlin_try.R
-import com.example.xiaojun.kotlin_try.service.MOnRecyclerViewClickListener
+import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewClickListener
 
 /**
  * Created by XiaoJun on 2017/7/22.
@@ -20,8 +20,11 @@ class MusicSongListAdapter(private val mContext: Context, private val mData:List
         val HIDE = -1 //不显示序号
     }
 
-    var clickListener: MOnRecyclerViewClickListener? = null
+    private var clickListener: MOnRecyclerViewClickListener? = null
 
+    public fun setOnCLickListener(listener:MOnRecyclerViewClickListener){
+        this.clickListener = listener
+    }
     override fun getItemViewType(position: Int): Int {
         return super.getItemViewType(position)
     }

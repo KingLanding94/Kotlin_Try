@@ -17,6 +17,7 @@ import android.content.IntentFilter
 import android.os.Handler
 import android.widget.Toast
 import com.example.xiaojun.kotlin_try.data.db.SongInfoBean
+import com.example.xiaojun.kotlin_try.listener.MusicPlayListener
 import com.example.xiaojun.kotlin_try.util.ToastUtil
 import java.lang.Class.*
 
@@ -118,7 +119,7 @@ class MusicPlayService : Service() {
      */
     fun play() {
         try {
-            loadDataSource.loadSongInfo(App.getContext(), songList[currIndex].songId.toInt())
+            loadDataSource.loadSongInfo(App.getContext(), songList[currIndex])
         }catch (e:IndexOutOfBoundsException){
             ToastUtil.shortShow("当前没有选中任何歌曲")
         }
@@ -226,7 +227,7 @@ class MusicPlayService : Service() {
         }
     }
 
-    fun setPlayingListener(listener:MusicPlayListener){
+    fun setPlayingListener(listener: MusicPlayListener){
         playingListener = listener
     }
 

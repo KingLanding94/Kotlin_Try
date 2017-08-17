@@ -95,8 +95,7 @@ class SongListPresenter(private val mContext:Context,private val mView:SongListC
 
     fun responseToSongList(song_list:List<SongBean.SongInfoForShow>):ArrayList<SongInfoBean>{
         val ret = ArrayList<SongInfoBean>()
-        if (song_list == null) return ret
-        for (i in song_list!!){
+        for (i in song_list){
             val song = SongInfoBean()
             song.artistId = i.artist_id
             song.albumId = i.album_id

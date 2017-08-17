@@ -71,7 +71,7 @@ class TypeTabPresenter(private val type:Int,private val view: TypeTabContact.Vie
 
     fun getBookTabs():ArrayList<String>{
         val ret = ArrayList<String>()
-        ret += arrayListOf("推荐","歌单","排行榜","电台" )
+        ret += arrayListOf("暂无","暂无","暂无","暂无" )
         return ret
     }
 }

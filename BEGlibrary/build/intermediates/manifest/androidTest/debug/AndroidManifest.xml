@@ -13,7 +13,7 @@
         android:label="Tests for cn.bingoogolapple.bgabanner.test"
         android:targetPackage="cn.bingoogolapple.bgabanner.test" />
 
-    <application>
+    <application android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
     </application>
 

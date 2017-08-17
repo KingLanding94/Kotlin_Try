@@ -3,7 +3,7 @@ package com.example.xiaojun.kotlin_try.mlibrary
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
-import com.example.xiaojun.kotlin_try.service.MOnRecyclerViewClickListener
+import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewClickListener
 
 /**
  * Created by XiaoJun on 2017/7/20.

@@ -44,15 +44,18 @@ class MusicPlayDataSource {
     /**
      * 根据id加载歌曲的信息,现在的问题是获得到的可播放信息是网络获取，
      */
-    fun loadSongInfo(mContext: Context, songId: Int) {
-        var responeBean: MusicPlayResponseBean? = null
-        var songInfo: SongBean.SongInfoForPlay? = null
+    fun loadSongInfo(mContext: Context, song:SongInfoBean) {
         val retrofit = RetrofitClient.getInstance(mContext, BaiduMusicApi.MusicBase)
         val apiService = retrofit.create(BaiduMusicApi::class.java)
-        apiService?.getSongLinkInfo(BaiduMusicApi.MusicFrom, BaiduMusicApi.Format, "baidu.ting.song.play", songId)
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribeOn(Schedulers.io())
-                ?.subscribe(MusicInfoObserver())
+        if (song.from == Constant.FROMLOCAL){
+            songInfo = song
+            listener?.OnSuccess()  //直接返回原本的song，后期可能会有加载歌词等处理，现在只是实现播放
+        }else{
+            apiService?.getSongLinkInfo(BaiduMusicApi.MusicFrom, BaiduMusicApi.Format, "baidu.ting.song.play", song.songId.toInt())
+                    ?.observeOn(AndroidSchedulers.mainThread())
+                    ?.subscribeOn(Schedulers.io())
+                    ?.subscribe(MusicInfoObserver())
+        }
     }
 
     fun getSongInfo():SongInfoBean{

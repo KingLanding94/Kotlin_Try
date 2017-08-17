@@ -23,7 +23,8 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/fountain_anim"/>
+            android:src="@drawable/fountain_anim"
+            android:contentDescription="@string/loading_animotion" />
         <TextView
             android:id="@+id/loadingTips"
             android:layout_marginLeft="5dp"

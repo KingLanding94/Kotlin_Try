@@ -40,6 +40,8 @@ object Constant {
     val NEXTACTION = 4
     val PREVACTION = 8
     val MODEACTION = 16
+    val PLAYING = 32
+    val STOPED = 64
 
     val REQUESTINFO = 128
     val ISPLAYING = 256
@@ -96,8 +98,8 @@ object Constant {
      * 数据库相关
      */
 
-    val LOCALMUSIC = "本地音乐"
-    val FAVORITE = "我喜欢"
-    val RECENTPLAY = "最近播放"
+    val LOCALMUSIC = "localMusic"
+    val FAVORITE = "myFavorite"
+    val RECENTPLAY = "recentPlayed"
 
 }

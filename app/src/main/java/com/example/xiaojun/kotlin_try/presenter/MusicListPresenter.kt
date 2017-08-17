@@ -77,10 +77,10 @@ class MusicListPresenter(private val view:MusicListContact.View): MusicListConta
             val source = MusicLocalSource()
             val list = source.getMusicList()
 //            DBHelper.saveListToTable(list!!,Constant.LOCALMUSIC)     先不处理数据库问题了
-            localMusic = list!!.size
+            localMusic = list.size
         }
         ret.add(0,localMusic)
-        var recentMusic = DBHelper.getTableSize(Constant.RECENTPLAY)
+        val recentMusic = DBHelper.getTableSize(Constant.RECENTPLAY)
         ret.add(1,recentMusic)
         return ret
     }

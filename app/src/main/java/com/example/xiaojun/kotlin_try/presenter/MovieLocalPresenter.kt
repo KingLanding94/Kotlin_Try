@@ -22,7 +22,7 @@ class MovieLocalPresenter(val mView: MovieLocalContact.View) : MovieLocalContact
     override fun start() {
         Observable.create({
             e: ObservableEmitter<MutableList<MovieBean.Video>>? ->
-            e?.onNext(localMovieDataSource.getList())
+            e?.onNext(localMovieDataSource.getList()!!)
             e?.onComplete()
         })
                 .observeOn(AndroidSchedulers.mainThread())
@@ -30,7 +30,7 @@ class MovieLocalPresenter(val mView: MovieLocalContact.View) : MovieLocalContact
                 .subscribe(object : Observer<MutableList<MovieBean.Video>> {
                     var disposable: Disposable? = null
                     override fun onNext(t: MutableList<MovieBean.Video>?) {
-                        list  = t as ArrayList<MovieBean.Video>
+                        list = t as ArrayList<MovieBean.Video>
                         onGoing()
                     }
 

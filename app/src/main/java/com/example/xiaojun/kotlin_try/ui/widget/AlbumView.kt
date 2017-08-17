@@ -91,7 +91,7 @@ class AlbumView: FrameLayout {
                 setAlbum(R.drawable.album_default)
             }
         })
-        loadDataSource.loadSongInfo(context,song.songId.toInt())
+        loadDataSource.loadSongInfo(context,song)
     }
 
 

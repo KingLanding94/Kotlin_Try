@@ -1,10 +1,7 @@
 package com.example.xiaojun.kotlin_try.data.source.local
 
-import android.Manifest
-import android.content.pm.PackageManager
+
 import android.provider.MediaStore
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import com.example.xiaojun.kotlin_try.data.db.DBHelper
 import com.example.xiaojun.kotlin_try.util.App
 import java.util.ArrayList
@@ -25,18 +22,18 @@ class MusicLocalSource {
     /**
      * 后期再把这些数据添加到数据库里面
      */
-    fun getMusicList(): ArrayList<SongInfoBean>? {
+    fun getMusicList(): ArrayList<SongInfoBean> {
 
         val ret = ArrayList<SongInfoBean>()
         val c = App.getContext().contentResolver.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, null)
         if (c != null) {
-            while (c!!.moveToNext()) {
-                var song = SongInfoBean()
+            while (c.moveToNext()) {
+                val song = SongInfoBean()
                 //扫描本地文件，得到歌曲的相关信息
-                song.title = c!!.getString(c!!.getColumnIndex(MediaStore.Audio.Media.TITLE))
-                song.artist = c!!.getString(c!!.getColumnIndex(MediaStore.Audio.Media.ARTIST))
-                song.songPath = c!!.getString(c!!.getColumnIndex(MediaStore.Audio.Media.DATA))
-                song.duration = c!!.getInt(c!!.getColumnIndex(MediaStore.Audio.Media.DURATION))
+                song.title = c.getString(c.getColumnIndex(MediaStore.Audio.Media.TITLE))
+                song.artist = c.getString(c.getColumnIndex(MediaStore.Audio.Media.ARTIST))
+                song.songPath = c.getString(c.getColumnIndex(MediaStore.Audio.Media.DATA))
+                song.duration = c.getInt(c.getColumnIndex(MediaStore.Audio.Media.DURATION))
                 song.from = Constant.FROMLOCAL
                 ret.add(song)
             }

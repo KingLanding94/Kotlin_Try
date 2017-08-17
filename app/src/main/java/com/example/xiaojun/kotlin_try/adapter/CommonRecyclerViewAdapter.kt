@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.xiaojun.kotlin_try.util.App
-import com.example.xiaojun.kotlin_try.service.MOnRecyclerViewLoadMoreListener
+import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewLoadMoreListener
 
 
 /**

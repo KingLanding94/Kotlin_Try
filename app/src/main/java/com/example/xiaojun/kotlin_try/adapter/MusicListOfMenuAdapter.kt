@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.xiaojun.kotlin_try.R
-import com.example.xiaojun.kotlin_try.service.MOnRecyclerViewClickListener
+import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewClickListener
 
 /**
  * Created by XiaoJun on 2017/7/17.

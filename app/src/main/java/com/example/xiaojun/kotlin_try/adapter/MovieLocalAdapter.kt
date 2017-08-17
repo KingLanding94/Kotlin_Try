@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.xiaojun.kotlin_try.R
 import com.example.xiaojun.kotlin_try.util.App
-import com.example.xiaojun.kotlin_try.service.MOnRecyclerViewClickListener
+import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewClickListener
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 /**

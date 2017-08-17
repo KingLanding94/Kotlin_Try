@@ -2,23 +2,18 @@ package com.example.xiaojun.kotlin_try.ui.fragment.movie
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.GridLayout
 
-import com.example.xiaojun.kotlin_try.R
 import com.example.xiaojun.kotlin_try.adapter.MovieDoubanAdapter
 import com.example.xiaojun.kotlin_try.base.BaseFragmentForList
 import com.example.xiaojun.kotlin_try.contact.MovieTypeContact
 import com.example.xiaojun.kotlin_try.data.bean.MovieDoubanResponseBean
 import com.example.xiaojun.kotlin_try.mlibrary.RecyclerViewItemSpace
 import com.example.xiaojun.kotlin_try.presenter.MovieListPresenter
-import com.example.xiaojun.kotlin_try.service.MOnRecyclerViewClickListener
+import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewClickListener
 import com.example.xiaojun.kotlin_try.ui.activity.movie.MovieShowActivity
 import com.example.xiaojun.kotlin_try.util.Constant
 import com.google.gson.Gson
@@ -70,10 +65,10 @@ class MovieTypeFragment : BaseFragmentForList(), MovieTypeContact.View {
         mData.addAll(formatData())
         mAdapter = MovieDoubanAdapter(activity,mData)
         mAdapter?.clickListener =
-            object :MOnRecyclerViewClickListener{
+            object : MOnRecyclerViewClickListener {
                 override fun onClick(view: View, position: Int) {
                     val intent = Intent(activity,MovieShowActivity::class.java)
-                    intent.putExtra("movie",Gson().toJson(movieReponse!!.subjects!![position]))
+                    intent.putExtra("movie",Gson().toJson(movieReponse!!.subjects[position]))
                     startActivity(intent)
                 }
             }

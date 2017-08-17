@@ -77,16 +77,26 @@ object MUtils {
 
     fun getBitMapFromSong(uri:String):Bitmap?{
         val mmr = MediaMetadataRetriever()
-        val rawArt: ByteArray?
+        var rawArt: ByteArray?
         val art: Bitmap?
-        val bfo = BitmapFactory.Options()
-        mmr.setDataSource(App.getContext(), Uri.parse(uri))
+        mmr.setDataSource(uri)
         rawArt = mmr.embeddedPicture
-        if (null != rawArt)
-            art = BitmapFactory.decodeByteArray(rawArt, 0, rawArt.size, bfo)
+        if (null != rawArt){
+            art = BitmapFactory.decodeByteArray(rawArt, 0, rawArt.size)
+            rawArt = null
+        }
+
         else
             art = null
         return art
+    }
+
+    fun getBitmapBytes(uri:String):ByteArray?{
+        val mmr = MediaMetadataRetriever()
+        var rawArt: ByteArray?
+        mmr.setDataSource(uri)
+        rawArt = mmr.embeddedPicture
+        return rawArt
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.xiaojun.kotlin_try.mlibrary
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.example.xiaojun.kotlin_try.util.Config
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -40,15 +41,19 @@ class RetrofitClient(context: Context,baseUrl: String) {
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(okHttpClient)
-                    .build();
+                    .build()
+
     }
     companion object {
-        var instance: RetrofitClient? = null
+
+        @SuppressLint("StaticFieldLeak")
+        @Volatile var instance: RetrofitClient? = null
 
         fun getInstance(context: Context, baseUrl:String): RetrofitClient {
             if (instance == null){
                 synchronized(RetrofitClient::class){
-                    instance = RetrofitClient(context, baseUrl)
+                    if (instance == null)
+                        instance = RetrofitClient(context, baseUrl)
                 }
             }
             return instance!!

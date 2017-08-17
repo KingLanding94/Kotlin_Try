@@ -2,7 +2,6 @@ package com.example.xiaojun.kotlin_try.ui.activity.music
 
 import android.content.Intent
 import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -11,23 +10,21 @@ import com.example.xiaojun.kotlin_try.R
 import com.example.xiaojun.kotlin_try.adapter.MusicSongListAdapter
 import com.example.xiaojun.kotlin_try.contact.SongListContact
 import com.example.xiaojun.kotlin_try.data.db.SongInfoBean
-import com.example.xiaojun.kotlin_try.service.MOnRecyclerViewClickListener
+import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewClickListener
 import com.example.xiaojun.kotlin_try.service.PlayListChangedEvent
 import com.example.xiaojun.kotlin_try.presenter.SongListPresenter
-import com.example.xiaojun.kotlin_try.service.MusicPlayService
 import com.example.xiaojun.kotlin_try.util.Constant
 import kotlinx.android.synthetic.main.activity_song_sheet.*
 import kotlinx.android.synthetic.main.song_list_operation.*
 import kotlinx.android.synthetic.main.song_list_play.*
 import org.greenrobot.eventbus.EventBus
-import android.os.Build
-
+import com.example.xiaojun.kotlin_try.base.BaseActivity
 
 
 /**
  * 这个activity需要展示来自歌单以及电台的数据
  */
-class SongSheetActivity : AppCompatActivity(),SongListContact.View {
+class SongSheetActivity : BaseActivity(),SongListContact.View {
 
     private var mPresenter:SongListContact.Presenter? = null
     private var songList:ArrayList<SongInfoBean>? = null
@@ -49,6 +46,10 @@ class SongSheetActivity : AppCompatActivity(),SongListContact.View {
         getParamAndSet()
         mPresenter = SongListPresenter(this,this,from,identity!!)
         initView()
+    }
+
+    override fun showMusicStateFab(): Boolean {
+        return true
     }
 
     fun getParamAndSet(){
@@ -123,7 +124,7 @@ class SongSheetActivity : AppCompatActivity(),SongListContact.View {
         }
         songListCapacity.text = "(共"+efficientCount+"首)"
         adapter = MusicSongListAdapter(this,formatData())
-        adapter!!.clickListener = SongClickListener()
+        adapter!!.setOnCLickListener(SongClickListener())
         songListRecyclerView.adapter = adapter
     }
 

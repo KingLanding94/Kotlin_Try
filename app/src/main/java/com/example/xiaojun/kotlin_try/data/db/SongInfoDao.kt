@@ -1,5 +1,6 @@
 package com.example.xiaojun.kotlin_try.data.db
 
+import android.annotation.SuppressLint
 import android.database.sqlite.SQLiteDatabase
 import com.example.xiaojun.kotlin_try.util.Config
 import android.content.ContentValues
@@ -14,6 +15,10 @@ import com.example.xiaojun.kotlin_try.util.App
 //原本打算用greendao，最后还是手写了，后期应该会把这些改掉，先把功能实现吧
 
 class SongInfoDao {
+
+    init {
+
+    }
 
     var db:SQLiteDatabase? = null
     private fun openOrCreateDb(name:String = Config.DBNAME){
@@ -65,6 +70,7 @@ class SongInfoDao {
         openOrCreateDb()
         val list = ArrayList<SongInfoBean>()
 
+        @SuppressLint("Recycle")
         val cursor = db?.query(true, table, arrayOf("_id", "FROM", "TITLE", "ARTIST",
                 "ALBUM", "DURATION", "COVER_PATH", "LYR_PATH",
                 "SONG_PATH","COVER_LINK","LYR_LINK" ,"SONG_LINK","SONG_ID","ALBUM_ID","ARTIST_ID"), null, null, null, null, null, null) ?: return list
@@ -90,10 +96,12 @@ class SongInfoDao {
             song.artistId = cursor.getString(count)
             list.add(song)
         }
+        cursor.close()
         closeDb()
         return list
     }
 
+    //总是出现没有创建表错误
     fun getSheetSize(table:String):Int{
         openOrCreateDb()
         val cursor = db?.query(true, table, arrayOf("_id"), null, null, null, null, null, null)
@@ -102,21 +110,9 @@ class SongInfoDao {
             return 0
         }
         val num = cursor.count
+        cursor.close()
         closeDb()
         return num
-    }
-
-    fun isTableCreated(table:String):Boolean{
-        openOrCreateDb()
-        val cursor = db?.rawQuery("select name from sqlite_master where type='table';", null)
-        while (cursor != null && cursor.moveToNext()) {
-            //遍历出表名
-            val name = cursor.getString(0)
-            if (name.equals(table)){
-                return true
-            }
-        }
-        return false
     }
 
     fun clearTable(table:String){

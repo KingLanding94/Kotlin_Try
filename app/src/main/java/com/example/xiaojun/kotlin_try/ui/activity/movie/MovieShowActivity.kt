@@ -9,13 +9,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.xiaojun.kotlin_try.R
+import com.example.xiaojun.kotlin_try.base.BaseActivity
 import com.example.xiaojun.kotlin_try.data.bean.MovieDoubanResponseBean
 import com.example.xiaojun.kotlin_try.util.ToastUtil
 import com.google.gson.Gson
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_movie_show.*
 
-class MovieShowActivity : AppCompatActivity() {
+class MovieShowActivity : BaseActivity() {
 
     private var movieBean : MovieDoubanResponseBean.MovieBeanInDouBan? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +31,7 @@ class MovieShowActivity : AppCompatActivity() {
         movieShowToolbar.setNavigationOnClickListener({
             onBackPressed()
         })
+
         //使用CollapsingToolbarLayout必须把title设置到CollapsingToolbarLayout上，设置到Toolbar上则不会显示
         movieShowCollTool?.title = movieBean?.title
         //通过CollapsingToolbarLayout修改字体颜色
@@ -55,7 +57,5 @@ class MovieShowActivity : AppCompatActivity() {
             }
             actorBanner.setData(actors)
         }
-
-
     }
 }

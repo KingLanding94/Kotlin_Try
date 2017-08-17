@@ -15,9 +15,10 @@ import android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.os.Build
 import android.view.View
+import com.example.xiaojun.kotlin_try.base.BaseActivity
 
 
-class MoviePlayActivity : AppCompatActivity() {
+class MoviePlayActivity : BaseActivity() {
 
     var localVideo :MovieBean.Video? = null
     override fun onCreate(savedInstanceState: Bundle?) {
