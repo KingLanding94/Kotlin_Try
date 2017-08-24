@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:useLevel="false">
+
+    <solid android:color="@android:color/transparent"/>
+
+    <!--圆环的宽度为1dp，圆环的颜色为white-->
+    <stroke
+        android:width="1dp"
+        android:color="@android:color/white"/>
+
+    <size
+        android:width="10dp"
+        android:height="10dp"/>
+</shape>

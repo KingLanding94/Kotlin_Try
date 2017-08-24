@@ -1,24 +1,21 @@
 package com.example.xiaojun.kotlin_try.ui.fragment.music
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import com.example.xiaojun.kotlin_try.R
-import com.example.xiaojun.kotlin_try.adapter.MusicSongListAdapter
 import com.example.xiaojun.kotlin_try.base.BaseFragmentForAll
 import com.example.xiaojun.kotlin_try.contact.MusicLocalContract
 import com.example.xiaojun.kotlin_try.data.db.SongInfoBean
-import com.example.xiaojun.kotlin_try.listener.MOnRecyclerViewClickListener
+import com.example.xiaojun.kotlin_try.mlibrary.MRecyclerView
 import com.example.xiaojun.kotlin_try.mlibrary.RecyclerViewItemSpace
 import com.example.xiaojun.kotlin_try.presenter.MusicLocalPresenter
 import com.example.xiaojun.kotlin_try.service.PlayListChangedEvent
 import com.example.xiaojun.kotlin_try.ui.activity.music.MusicPlayActivity
+import com.example.xiaojun.kotlin_try.util.ToastUtil
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -30,23 +27,12 @@ class MusicLocalFragment: BaseFragmentForAll(),MusicLocalContract.View,View.OnCl
     val OPEN = true
     val CLOSED = false
     private val mPresenter = MusicLocalPresenter(this)
-    private var recyclerView:RecyclerView? = null
+    private var recyclerView: MRecyclerView? = null
     private var songList = ArrayList<SongInfoBean>()
-    private var capacity:TextView? = null
-    private var mutiChoose:LinearLayout? = null
-    private var playAll:RelativeLayout? = null
-    private var sheetCollectedState = CLOSED
-    private var sheetCreatedState = CLOSED
 
     override fun initView() {
         super.initView()
         recyclerView = mView!!.findViewById(R.id.songLocalRecyclerView)
-        capacity = mView!!.findViewById(R.id.songListCapacity)
-        mutiChoose = mView!!.findViewById(R.id.mutiChoose)
-        playAll = mView!!.findViewById(R.id.playAll)
-
-        mutiChoose?.setOnClickListener(this)
-        playAll?.setOnClickListener(this)
 
         val layoutManager =  LinearLayoutManager(activity, LinearLayout.VERTICAL,false)
         layoutManager.isSmoothScrollbarEnabled = true
@@ -69,19 +55,52 @@ class MusicLocalFragment: BaseFragmentForAll(),MusicLocalContract.View,View.OnCl
     override fun onSuccess() {
         super.onSuccess()
         songList = mPresenter.submitData()
-        capacity?.text = songList.size.toString()
-        val adapter = MusicSongListAdapter(activity, formatData())
-        adapter.setOnCLickListener(object : MOnRecyclerViewClickListener {
-            override fun onClick(view: View, position: Int) {
+
+        /**
+         * MRecyclerView的具体使用。从下面这么多代码看来可能会觉得MRecyclerView很难使用
+         * 实际上并不是，下面设置了很多其实只是为了演示接口的用法
+         */
+
+        recyclerView?.setDataSize(songList.size)
+        recyclerView?.setBindDataServer(object :MRecyclerView.BindDataService{  //设置具体的绑定
+            @SuppressLint("SetTextI18n")
+            override fun OnBindData(holder: MRecyclerView.MViewHolder?, position: Int, type:Int) {
+                when (type){
+                    MRecyclerView.NORMAL->{
+                        (holder?.getView(R.id.songOrder) as TextView).text = position.toString()
+                        (holder.getView(R.id.songTitle) as TextView).text = songList[position].title
+                        var detail = ""
+                        detail = songList[position].artist+" - "+ songList[position].album
+                        (holder.getView(R.id.songDetail) as TextView).text = detail
+                        //为歌曲条目的更多设置监听
+                        (holder.getView(R.id.songOperatorMore) as ImageView).setOnClickListener(this@MusicLocalFragment)
+                    }
+                    MRecyclerView.HEADER->{
+                        (holder?.getView(R.id.songListCapacity) as TextView).text = "共("+songList.size.toString()+")首"
+                        (holder.getView(R.id.mutiChoose) as LinearLayout).setOnClickListener(this@MusicLocalFragment)
+                        (holder.getView(R.id.songListPlayIcon) as ImageView).setOnClickListener(this@MusicLocalFragment)
+                    }
+
+                    //这个里面没有footer，所以就不设置了
+                    MRecyclerView.FOOTER->{
+
+                    }
+                }
+            }
+        })
+        recyclerView?.setOnItemClickedListener(object :MRecyclerView.OnItemClickedListener{
+
+            override fun onClick(view: View?) {
+
+            }
+            override fun onClick(position: Int) {
                 val event = PlayListChangedEvent(songList, position)
                 EventBus.getDefault().post(event)
                 val intent = Intent(activity, MusicPlayActivity::class.java)
                 startActivity(intent)
             }
         })
-
-        recyclerView!!.adapter = adapter
-
+        recyclerView?.show()
         Log.e("localMusic","success"+ songList.size)
     }
 
@@ -90,29 +109,18 @@ class MusicLocalFragment: BaseFragmentForAll(),MusicLocalContract.View,View.OnCl
         Log.e("musicLocal"," failed")
     }
 
-    //点击音乐的时候是要一次性把歌单全部传给playService吗
     override fun onClick(p0: View?) {
-        when(p0!!.id){
-            R.id.mutiChoose->{
-                //跳转到多选界面
-            }
-            R.id.playAll->{
-                //播放全部
-            }
-        }
-    }
 
-    fun formatData():ArrayList<HashMap<String,Any>>{
-        val mapList = ArrayList<HashMap<String,Any>>()
-        for (i in songList){
-            val map = HashMap<String,Any>()
-            map.put("order",MusicSongListAdapter.HIDE)
-            map.put("title", i.title)
-            var detail = ""
-            detail = i.artist+" - "+ i.album
-            map.put("detail",detail)
-            mapList.add(map)
+        when (p0?.id){
+            R.id.mutiChoose->{
+                ToastUtil.shortShow("you clicked multiChoose!")
+            }
+            R.id.songListPlayIcon->{
+                ToastUtil.shortShow("we will play all of the music for you!")
+            }
+            R.id.songOperatorMore->{
+                ToastUtil.shortShow("Operator More!")
+            }
         }
-        return mapList
     }
 }

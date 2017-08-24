@@ -120,22 +120,28 @@
                 android:textSize="16sp"
                 android:text="主演列表"/>
 
-            <cn.bingoogolapple.bgabanner.BGABanner
+            <!--<cn.bingoogolapple.bgabanner.BGABanner-->
+                <!--android:id="@+id/actorBanner"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_width="300dp"-->
+                <!--android:layout_height="230dp"-->
+                <!--style="@style/BannerDefaultStyle"-->
+                <!--app:banner_indicatorGravity="bottom|right"-->
+                <!--app:banner_isNeedShowIndicatorOnOnlyOnePage="true"-->
+                <!--app:banner_isNumberIndicator="true"-->
+                <!--app:banner_numberIndicatorBackground="@drawable/shape_number_indicator_background"-->
+                <!--app:banner_numberIndicatorTextColor="@android:color/white"-->
+                <!--app:banner_numberIndicatorTextSize="10sp"-->
+                <!--app:banner_pointAutoPlayAble="true"-->
+                <!--app:banner_pointContainerBackground="@android:color/transparent"-->
+                <!--app:banner_transitionEffect="defaultEffect">-->
+            <!--</cn.bingoogolapple.bgabanner.BGABanner>-->
+
+            <com.example.xiaojun.blog.widget.Banner
                 android:id="@+id/actorBanner"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="300dp"
-                android:layout_height="230dp"
-                style="@style/BannerDefaultStyle"
-                app:banner_indicatorGravity="bottom|right"
-                app:banner_isNeedShowIndicatorOnOnlyOnePage="true"
-                app:banner_isNumberIndicator="true"
-                app:banner_numberIndicatorBackground="@drawable/shape_number_indicator_background"
-                app:banner_numberIndicatorTextColor="@android:color/white"
-                app:banner_numberIndicatorTextSize="10sp"
-                app:banner_pointAutoPlayAble="true"
-                app:banner_pointContainerBackground="@android:color/transparent"
-                app:banner_transitionEffect="defaultEffect">
-            </cn.bingoogolapple.bgabanner.BGABanner>
+                android:layout_width="match_parent"
+                android:layout_height="230dp">
+            </com.example.xiaojun.blog.widget.Banner>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

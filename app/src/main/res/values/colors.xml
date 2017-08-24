@@ -21,4 +21,6 @@
     <color name="testPrimary">#393a3e</color>
     <color name="testSecond">#00ba0b</color>
 
+    <color name="text_Grey">#8496a0</color>
+
 </resources>

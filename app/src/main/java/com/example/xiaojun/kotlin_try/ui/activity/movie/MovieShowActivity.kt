@@ -55,7 +55,7 @@ class MovieShowActivity : BaseActivity() {
                 name.text = i.name
                 actors.add(view)
             }
-            actorBanner.setData(actors)
+            actorBanner.setViews(actors)
         }
     }
 }

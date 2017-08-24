@@ -5,19 +5,13 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <LinearLayout
+    <com.example.xiaojun.kotlin_try.mlibrary.MRecyclerView
+        android:id="@+id/songLocalRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include layout="@layout/song_list_play" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/songLocalRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+        app:headerLayout="@layout/song_list_play"
+        app:itemLayout="@layout/item_music_song_show"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </com.example.xiaojun.kotlin_try.mlibrary.MRecyclerView>
 
 </android.support.v4.widget.NestedScrollView>

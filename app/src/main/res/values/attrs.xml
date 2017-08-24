@@ -3,7 +3,39 @@
 
     <declare-styleable name="CircleImageView">
         <!--圆形头像的半径-->
-        <attr name="radius" format="dimension"/>
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CircleImageViewX">
+
+        <!--图片资源-->
+        <attr name="src" format="reference" />
+        <!--是否添加外围圆环，如果没有的话，那么后面的两个参数都没有意义-->
+        <attr name="hasRing" format="boolean" />
+        <!--圆环宽度-->
+        <attr name="ringWidth" format="dimension" />
+        <!--圆环颜色-->
+        <attr name="ringColor" format="color" />
+
+    </declare-styleable>
+
+
+    <declare-styleable name="Banner">
+        <!--轮播间隔时间-->
+        <attr name="intervalTime" format="integer" />
+
+    </declare-styleable>
+
+    <declare-styleable name="MRecyclerView">
+
+        <!--item的布局文件-->
+        <attr name="itemLayout" format="reference"/>
+        <!--header的布局文件-->
+        <attr name="headerLayout" format="reference"/>
+        <!--footer的布局文件-->
+        <attr name="footerLayout" format="reference"/>
+
     </declare-styleable>
 
 </resources>
